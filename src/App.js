@@ -36,13 +36,11 @@ const App = () => {
   const moveSnake = ({ keyCode }) =>
     keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
 
-  const createApple = () => {
-    apple.map((_, i) => Math.floor((Math.random() * CANVAS_SIZE[i]) / SCALE));
-  };
+  const createApple = () =>
+    apple.map((_, i) => Math.floor(Math.random() * (CANVAS_SIZE[i] / SCALE)));
 
   const checkCollision = (piece, snk = snake) => {
-    // if (!piece) return;
-    console.log('piece', piece);
+    // snake collides with the wall
     if (
       piece[0] * SCALE >= CANVAS_SIZE[0] ||
       piece[0] < 0 ||
@@ -50,7 +48,7 @@ const App = () => {
       piece[1] < 0
     )
       return true;
-
+    // snake collides with itself
     for (const segment of snk) {
       if (piece[0] === segment[0] && piece[1] === segment[1]) return true;
     }
@@ -59,11 +57,14 @@ const App = () => {
   };
 
   const checkAppleCollision = newSnake => {
+    // snake collides with apple
     if (newSnake[0][0] === apple[0] && newSnake[0][1] === apple[1]) {
       let newApple = createApple();
+      // check if new apple doesn't appear inside the snake
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
+
       setApple(newApple);
       return true;
     }
@@ -73,7 +74,6 @@ const App = () => {
   const gameLoop = () => {
     const snakeCopy = JSON.parse(JSON.stringify(snake));
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]];
-    console.log('newSnakeHead', newSnakeHead);
     snakeCopy.unshift(newSnakeHead);
     if (checkCollision(newSnakeHead)) endGame();
     if (!checkAppleCollision(snakeCopy)) snakeCopy.pop();
@@ -81,8 +81,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    // if (!apple) return;
-    // console.log("apple", apple);
     const context = canvasRef.current.getContext('2d');
     context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
     context.clearRect(0, 0, CANVAS_SIZE[0], CANVAS_SIZE[1]);
