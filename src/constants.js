@@ -1,5 +1,5 @@
 // const CANVAS_SIZE = [1000, 700];
-const CANVAS_SIZE = [window.innerWidth, window.innerHeight];
+const CANVAS_SIZE = [window.innerWidth * 0.9, window.innerHeight * 0.9];
 const SNAKE_START = [
   [8, 7],
   [8, 8],
