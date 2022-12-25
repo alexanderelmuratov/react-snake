@@ -144,7 +144,7 @@ const Wrapper = styled.div`
 const StartButton = styled.button`
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   /* align-self: center; */
   width: 220px;
   /* height: 50px; */
