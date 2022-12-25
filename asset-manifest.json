@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-snake/static/css/main.e05ce96b.css",
-    "main.js": "/react-snake/static/js/main.dbb192b4.js",
+    "main.js": "/react-snake/static/js/main.c27452ee.js",
     "static/media/Pixel-LCD-7.woff": "/react-snake/static/media/Pixel-LCD-7.63d9c15192fdeab6d3a6.woff",
     "index.html": "/react-snake/index.html",
     "main.e05ce96b.css.map": "/react-snake/static/css/main.e05ce96b.css.map",
-    "main.dbb192b4.js.map": "/react-snake/static/js/main.dbb192b4.js.map"
+    "main.c27452ee.js.map": "/react-snake/static/js/main.c27452ee.js.map"
   },
   "entrypoints": [
     "static/css/main.e05ce96b.css",
-    "static/js/main.dbb192b4.js"
+    "static/js/main.c27452ee.js"
   ]
 }
