@@ -18,7 +18,9 @@ const App = () => {
   const [apple, setApple] = useState(APPLE_START);
   const [dir, setDir] = useState([0, -1]);
   const [speed, setSpeed] = useState(null);
-  const [gameOver, setGameOver] = useState(false);
+  const [gameOver, setGameOver] = useState(true);
+  const [score, setScore] = useState(0);
+  // const [startButtonShown, setStartButtonShown] = useState(true);
 
   useInterval(() => gameLoop(), speed);
 
@@ -28,12 +30,15 @@ const App = () => {
     setDir([0, -1]);
     setSpeed(SPEED);
     setGameOver(false);
+    setScore(0);
+    // setStartButtonShown(false);
   };
 
   const endGame = () => {
     setSpeed(null);
     setGameOver(true);
-    alert('GAME OVER!');
+    // setStartButtonShown(true);
+    alert(`GAME OVER! YOU'VE GOT ${score} POINTS`);
   };
 
   const moveSnake = ({ keyCode }) =>
@@ -69,6 +74,7 @@ const App = () => {
       }
 
       setApple(newApple);
+      setScore(score => score + 1);
       return true;
     }
     return false;
@@ -110,8 +116,18 @@ const App = () => {
         height={`${CANVAS_SIZE[1]}px`}
       />
       {/* {gameOver && <div>GAME OVER!</div>} */}
+
+      <StartButton onClick={startGame}>
+        {gameOver ? 'Start Game' : `Score: ${score}`}
+      </StartButton>
       <MobileButtons move={moveSnake} />
-      <StartButton onClick={startGame}>Start Game</StartButton>
+      {/* {startButtonShown ? (
+        <StartButton onClick={startGame}>Start Game</StartButton>
+      ) : (
+        <div>
+          <p>Score: {score}</p>
+        </div>
+      )} */}
     </Wrapper>
   );
 };
@@ -135,7 +151,7 @@ const StartButton = styled.button`
   padding-top: 10px;
   padding-bottom: 10px;
   margin-top: 20px;
-  /* margin-bottom: 20px; */
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   /* color: darkred;

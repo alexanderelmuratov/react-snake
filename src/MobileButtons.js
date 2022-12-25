@@ -29,7 +29,7 @@ const StyledMobileButtons = styled.div`
   width: 390px;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-left: auto;
   margin-right: auto;
 
