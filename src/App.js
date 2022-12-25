@@ -148,8 +148,8 @@ const StartButton = styled.button`
   /* align-self: center; */
   width: 200px;
   /* height: 50px; */
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: auto;
