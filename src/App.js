@@ -130,20 +130,22 @@ const StartButton = styled.button`
   justify-content: center;
   align-items: center;
   align-self: center;
-  width: 120px;
-  height: 30px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
   /* color: darkred;
   background-color: lightgreen; */
-  color: lightgreen;
-  background-color: darkred;
+  color: black;
+  background-color: deepskyblue;
   border-radius: 100px;
   /* border: 1px solid black; */
   font-family: Pixel, Arial, Helvetica, sans-serif;
-  text-align: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+
   outline: none;
   border: 0px;
   box-shadow: 1px 1px 4px #555;
