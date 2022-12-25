@@ -8,6 +8,7 @@ import {
   SPEED,
   DIRECTIONS,
 } from './constants';
+import { MobileButtons } from 'MobileButtons';
 
 const App = () => {
   const canvasRef = useRef();
@@ -102,6 +103,7 @@ const App = () => {
       />
       {gameOver && <div>GAME OVER!</div>}
       <button onClick={startGame}>Start Game</button>
+      <MobileButtons move={moveSnake} />
     </div>
   );
 };
