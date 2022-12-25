@@ -160,7 +160,7 @@ const StyledCanvas = styled.canvas`
 const StyledStartButton = styled.button`
   display: flex;
   justify-content: center;
-  width: 200px;
+  width: 220px;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 20px;
