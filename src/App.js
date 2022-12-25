@@ -42,6 +42,7 @@ const App = () => {
   };
 
   const endGame = () => {
+    playSnakeDeadSound();
     setSpeed(null);
     setGameOver(true);
     toast.error(`GAME OVER! YOU GOT ${score} 🍎`);
@@ -60,16 +61,11 @@ const App = () => {
       piece[0] < 0 ||
       piece[1] * SCALE >= CANVAS_SIZE[1] ||
       piece[1] < 0
-    ) {
-      playSnakeDeadSound();
+    )
       return true;
-    }
     // snake collides with itself
     for (const segment of snk) {
-      if (piece[0] === segment[0] && piece[1] === segment[1]) {
-        playSnakeDeadSound();
-        return true;
-      }
+      if (piece[0] === segment[0] && piece[1] === segment[1]) return true;
     }
 
     return false;
@@ -160,7 +156,7 @@ const StyledCanvas = styled.canvas`
 const StyledStartButton = styled.button`
   display: flex;
   justify-content: center;
-  width: 220px;
+  width: 210px;
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 20px;
