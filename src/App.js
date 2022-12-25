@@ -146,7 +146,7 @@ const StartButton = styled.button`
   justify-content: center;
   /* align-items: center; */
   /* align-self: center; */
-  width: 220px;
+  width: 200px;
   /* height: 50px; */
   padding-top: 10px;
   padding-bottom: 10px;
@@ -160,8 +160,8 @@ const StartButton = styled.button`
   background-color: deepskyblue;
   border-radius: 100px;
   /* border: 1px solid black; */
-  font-family: Pixel, Arial, Helvetica, sans-serif;
-  /* font-weight: bold; */
+  /* font-family: Pixel, Arial, Helvetica, sans-serif; */
+  font-weight: bold;
   font-size: 24px;
   text-transform: uppercase;
   cursor: pointer;
