@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/react-snake/static/css/main.e05ce96b.css",
-    "main.js": "/react-snake/static/js/main.86c791cd.js",
-    "static/media/grass4.jpg": "/react-snake/static/media/grass4.8151ca1cc1290a977ea5.jpg",
-    "static/media/Pixel-LCD-7.woff": "/react-snake/static/media/Pixel-LCD-7.63d9c15192fdeab6d3a6.woff",
+    "main.css": "/react-snake/static/css/main.417fbd81.css",
+    "main.js": "/react-snake/static/js/main.85a1d3c2.js",
+    "static/js/845.a93ba3a0.chunk.js": "/react-snake/static/js/845.a93ba3a0.chunk.js",
+    "static/media/snake-sound.mp3": "/react-snake/static/media/snake-sound.e42cb8ec6f4d70c51d5f.mp3",
+    "static/media/grass.jpg": "/react-snake/static/media/grass.8151ca1cc1290a977ea5.jpg",
     "index.html": "/react-snake/index.html",
-    "main.e05ce96b.css.map": "/react-snake/static/css/main.e05ce96b.css.map",
-    "main.86c791cd.js.map": "/react-snake/static/js/main.86c791cd.js.map"
+    "main.417fbd81.css.map": "/react-snake/static/css/main.417fbd81.css.map",
+    "main.85a1d3c2.js.map": "/react-snake/static/js/main.85a1d3c2.js.map",
+    "845.a93ba3a0.chunk.js.map": "/react-snake/static/js/845.a93ba3a0.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e05ce96b.css",
-    "static/js/main.86c791cd.js"
+    "static/css/main.417fbd81.css",
+    "static/js/main.85a1d3c2.js"
   ]
 }
