@@ -95,7 +95,7 @@ const App = () => {
   return (
     <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
       <canvas
-        style={{ border: '1px solid black' }}
+        style={{ border: '1px solid black', backgroundColor: 'wheat' }}
         ref={canvasRef}
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
