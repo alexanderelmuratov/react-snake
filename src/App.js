@@ -161,7 +161,7 @@ const StartButton = styled.button`
   border-radius: 100px;
   /* border: 1px solid black; */
   font-family: Pixel, Arial, Helvetica, sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   cursor: pointer;
 
   outline: none;
