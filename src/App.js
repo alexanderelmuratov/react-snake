@@ -157,7 +157,7 @@ const StartButton = styled.button`
   /* color: darkred;
   background-color: lightgreen; */
   color: black;
-  background-color: deepskyblue;
+  /* background-color: deepskyblue; */
   border-radius: 100px;
   /* border: 1px solid black; */
   font-family: Pixel, Arial, Helvetica, sans-serif;
