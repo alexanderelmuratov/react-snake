@@ -86,6 +86,7 @@ const App = () => {
       playEatAppleSound();
       setApple(newApple);
       setScore(score => score + 1);
+      setSpeed(speed => speed - 10);
       return true;
     }
 
@@ -121,7 +122,7 @@ const App = () => {
         height={`${CANVAS_SIZE[1]}px`}
       />
       <StyledStartButton onClick={startGame}>
-        {gameOver ? 'Start Game' : `Score: ${score}`}
+        {gameOver ? 'Start Game' : `Score: ${score} 🍎`}
       </StyledStartButton>
       <MobileButtons move={moveSnake} />
       <ToastContainer
