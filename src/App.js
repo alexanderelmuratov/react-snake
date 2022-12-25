@@ -110,8 +110,8 @@ const App = () => {
         height={`${CANVAS_SIZE[1]}px`}
       />
       {/* {gameOver && <div>GAME OVER!</div>} */}
-      <StartButton onClick={startGame}>Start Game</StartButton>
       <MobileButtons move={moveSnake} />
+      <StartButton onClick={startGame}>Start Game</StartButton>
     </Wrapper>
   );
 };
@@ -131,9 +131,9 @@ const StartButton = styled.button`
   align-items: center;
   align-self: center;
   width: 220px;
-  height: 40px;
+  height: 50px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   margin-left: auto;
   margin-right: auto;
   /* color: darkred;
