@@ -1,10 +1,10 @@
+import styled from 'styled-components';
 import {
   ImArrowLeft,
   ImArrowRight,
   ImArrowUp,
   ImArrowDown,
 } from 'react-icons/im';
-import styled from 'styled-components';
 
 export const MobileButtons = ({ move }) => (
   <StyledMobileButtons>
@@ -23,11 +23,14 @@ export const MobileButtons = ({ move }) => (
   </StyledMobileButtons>
 );
 
+// ========== STYLES ==========
 const StyledMobileButtons = styled.div`
   display: flex;
-  width: 100%;
+  width: 390px;
   justify-content: space-between;
   flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
 
   button {
     display: flex;
@@ -39,7 +42,6 @@ const StyledMobileButtons = styled.div`
     outline: none;
     border: 0px;
     box-shadow: 1px 1px 4px #555;
-    /* background: #3ba9ca; */
     background: midnightblue;
     color: gold;
     font-family: Pixel, Arial, Helvetica, sans-serif;

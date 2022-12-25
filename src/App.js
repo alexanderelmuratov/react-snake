@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import { useInterval } from './useInterval';
 import {
   CANVAS_SIZE,
@@ -32,6 +33,7 @@ const App = () => {
   const endGame = () => {
     setSpeed(null);
     setGameOver(true);
+    alert('GAME OVER!');
   };
 
   const moveSnake = ({ keyCode }) =>
@@ -94,18 +96,55 @@ const App = () => {
   }, [snake, apple, gameOver]);
 
   return (
-    <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+    <Wrapper role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
       <canvas
-        style={{ border: '1px solid black', backgroundColor: 'wheat' }}
+        style={{
+          display: 'block',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          border: '1px solid black',
+          backgroundColor: 'wheat',
+        }}
         ref={canvasRef}
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
       />
-      {gameOver && <div>GAME OVER!</div>}
-      <button onClick={startGame}>Start Game</button>
+      {/* {gameOver && <div>GAME OVER!</div>} */}
+      <StartButton onClick={startGame}>Start Game</StartButton>
       <MobileButtons move={moveSnake} />
-    </div>
+    </Wrapper>
   );
 };
 
 export default App;
+
+// ========== STYLES ==========
+const Wrapper = styled.div`
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+`;
+
+const StartButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: 120px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  /* color: darkred;
+  background-color: lightgreen; */
+  color: lightgreen;
+  background-color: darkred;
+  border-radius: 100px;
+  /* border: 1px solid black; */
+  font-family: Pixel, Arial, Helvetica, sans-serif;
+  text-align: center;
+  outline: none;
+  border: 0px;
+  box-shadow: 1px 1px 4px #555;
+`;
