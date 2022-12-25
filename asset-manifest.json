@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/react-snake/static/js/main.105a6949.js",
+    "main.js": "/react-snake/static/js/main.19667df0.js",
     "index.html": "/react-snake/index.html",
-    "main.105a6949.js.map": "/react-snake/static/js/main.105a6949.js.map"
+    "main.19667df0.js.map": "/react-snake/static/js/main.19667df0.js.map"
   },
   "entrypoints": [
-    "static/js/main.105a6949.js"
+    "static/js/main.19667df0.js"
   ]
 }
