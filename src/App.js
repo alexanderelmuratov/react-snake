@@ -130,7 +130,7 @@ const StartButton = styled.button`
   justify-content: center;
   align-items: center;
   align-self: center;
-  width: 210px;
+  width: 220px;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
