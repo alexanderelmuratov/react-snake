@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useSound from 'use-sound';
-import snakeSound from './sounds/snake-sound.wav';
+import eatAppleSound from './sounds/eat-apple.wav';
+import snakeDeadSound from './sounds/snake-dead.wav';
 import { useInterval } from './useInterval';
 import {
   CANVAS_SIZE,
@@ -26,7 +27,8 @@ const App = () => {
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
 
-  const [play] = useSound(snakeSound);
+  const [playEatAppleSound] = useSound(eatAppleSound, { volume: 0.5 });
+  const [playSnakeDeadSound] = useSound(snakeDeadSound, { volume: 0.5 });
 
   useInterval(() => gameLoop(), speed);
 
@@ -42,7 +44,7 @@ const App = () => {
   const endGame = () => {
     setSpeed(null);
     setGameOver(true);
-    toast.error(`GAME OVER! YOU'VE GOT ${score} POINT(S)!`);
+    toast.error(`GAME OVER! SCORE = ${score}!`);
   };
 
   const moveSnake = ({ keyCode }) =>
@@ -58,11 +60,16 @@ const App = () => {
       piece[0] < 0 ||
       piece[1] * SCALE >= CANVAS_SIZE[1] ||
       piece[1] < 0
-    )
+    ) {
+      playSnakeDeadSound();
       return true;
+    }
     // snake collides with itself
     for (const segment of snk) {
-      if (piece[0] === segment[0] && piece[1] === segment[1]) return true;
+      if (piece[0] === segment[0] && piece[1] === segment[1]) {
+        playSnakeDeadSound();
+        return true;
+      }
     }
 
     return false;
@@ -76,11 +83,12 @@ const App = () => {
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-      play();
+      playEatAppleSound();
       setApple(newApple);
       setScore(score => score + 1);
       return true;
     }
+
     return false;
   };
 
@@ -116,7 +124,12 @@ const App = () => {
         {gameOver ? 'Start Game' : `Score: ${score}`}
       </StyledStartButton>
       <MobileButtons move={moveSnake} />
-      <ToastContainer position="top-center" autoClose={5000} theme="colored" />
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        theme="colored"
+        hideProgressBar={true}
+      />
     </StyledWrapper>
   );
 };
