@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useSound from 'use-sound';
-import snakeSound from './sounds/snake-sound.mp3';
+import snakeSound from './sounds/snake-sound.wav';
 import { useInterval } from './useInterval';
 import {
   CANVAS_SIZE,
@@ -26,7 +26,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
 
-  const [play, { stop }] = useSound(snakeSound, { loop: false });
+  const [play] = useSound(snakeSound);
 
   useInterval(() => gameLoop(), speed);
 
@@ -71,16 +71,14 @@ const App = () => {
   const checkAppleCollision = newSnake => {
     // snake collides with apple
     if (newSnake[0][0] === apple[0] && newSnake[0][1] === apple[1]) {
-      play();
       let newApple = createApple();
       // check if new apple doesn't appear inside the snake
       while (checkCollision(newApple, newSnake)) {
         newApple = createApple();
       }
-
+      play();
       setApple(newApple);
       setScore(score => score + 1);
-      setTimeout(() => stop(), 2000);
       return true;
     }
     return false;
@@ -137,6 +135,7 @@ const StyledWrapper = styled.div`
 
 const StyledCanvas = styled.canvas`
   display: block;
+  margin-top: 5px;
   margin-right: auto;
   margin-left: auto;
   border: none;

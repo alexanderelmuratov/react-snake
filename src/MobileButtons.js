@@ -48,7 +48,7 @@ const StyledMobileButtons = styled.div`
     font-size: 0.8rem;
   }
 
-  /* @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
     display: none;
-  } */
+  }
 `;
