@@ -1,5 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import useSound from 'use-sound';
+import snakeSound from './sounds/snake-sound.mp3';
 import { useInterval } from './useInterval';
 import {
   CANVAS_SIZE,
@@ -10,7 +14,7 @@ import {
   DIRECTIONS,
 } from './constants';
 import { MobileButtons } from 'MobileButtons';
-import grass from './img/grass4.jpg';
+import grass from './images/grass.jpg';
 
 const App = () => {
   const canvasRef = useRef();
@@ -21,7 +25,8 @@ const App = () => {
   const [speed, setSpeed] = useState(null);
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
-  // const [startButtonShown, setStartButtonShown] = useState(true);
+
+  const [play, { stop }] = useSound(snakeSound, { loop: false });
 
   useInterval(() => gameLoop(), speed);
 
@@ -32,14 +37,12 @@ const App = () => {
     setSpeed(SPEED);
     setGameOver(false);
     setScore(0);
-    // setStartButtonShown(false);
   };
 
   const endGame = () => {
     setSpeed(null);
     setGameOver(true);
-    // setStartButtonShown(true);
-    alert(`GAME OVER! YOU'VE GOT ${score} POINTS`);
+    toast.error(`GAME OVER! YOU'VE GOT ${score} POINT(S)!`);
   };
 
   const moveSnake = ({ keyCode }) =>
@@ -68,6 +71,7 @@ const App = () => {
   const checkAppleCollision = newSnake => {
     // snake collides with apple
     if (newSnake[0][0] === apple[0] && newSnake[0][1] === apple[1]) {
+      play();
       let newApple = createApple();
       // check if new apple doesn't appear inside the snake
       while (checkCollision(newApple, newSnake)) {
@@ -76,6 +80,7 @@ const App = () => {
 
       setApple(newApple);
       setScore(score => score + 1);
+      setTimeout(() => stop(), 2000);
       return true;
     }
     return false;
@@ -103,42 +108,25 @@ const App = () => {
   }, [snake, apple, gameOver]);
 
   return (
-    <Wrapper role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
-      <canvas
-        style={{
-          display: 'block',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          // border: '1px solid black',
-          backgroundColor: 'wheat',
-          border: 0,
-          boxShadow: '1px 1px 4px #555',
-        }}
+    <StyledWrapper role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+      <StyledCanvas
         ref={canvasRef}
         width={`${CANVAS_SIZE[0]}px`}
         height={`${CANVAS_SIZE[1]}px`}
       />
-      {/* {gameOver && <div>GAME OVER!</div>} */}
-
-      <StartButton onClick={startGame}>
+      <StyledStartButton onClick={startGame}>
         {gameOver ? 'Start Game' : `Score: ${score}`}
-      </StartButton>
+      </StyledStartButton>
       <MobileButtons move={moveSnake} />
-      {/* {startButtonShown ? (
-        <StartButton onClick={startGame}>Start Game</StartButton>
-      ) : (
-        <div>
-          <p>Score: {score}</p>
-        </div>
-      )} */}
-    </Wrapper>
+      <ToastContainer position="top-center" autoClose={5000} theme="colored" />
+    </StyledWrapper>
   );
 };
 
 export default App;
 
 // ========== STYLES ==========
-const Wrapper = styled.div`
+const StyledWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   background: url(${grass}) #000;
@@ -147,33 +135,33 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const StartButton = styled.button`
+const StyledCanvas = styled.canvas`
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border: none;
+  background-color: wheat;
+  box-shadow: 1px 1px 4px #555;
+`;
+
+const StyledStartButton = styled.button`
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* align-self: center; */
   width: 200px;
-  /* height: 50px; */
   padding-top: 5px;
   padding-bottom: 5px;
   margin-top: 20px;
   margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  /* color: darkred;
-  background-color: lightgreen; */
-  color: black;
-  background-color: deepskyblue;
-  border-radius: 100px;
-  /* border: 1px solid black; */
-  /* font-family: Pixel, Arial, Helvetica, sans-serif; */
-  /* line-height: normal; */
   font-weight: bold;
   font-size: 24px;
   text-transform: uppercase;
-  cursor: pointer;
-
+  color: black;
+  background-color: deepskyblue;
+  border-radius: 100px;
   outline: none;
   border: 0px;
   box-shadow: 1px 1px 4px #555;
+  cursor: pointer;
 `;

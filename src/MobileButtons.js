@@ -26,10 +26,9 @@ export const MobileButtons = ({ move }) => (
 // ========== STYLES ==========
 const StyledMobileButtons = styled.div`
   display: flex;
-  width: 390px;
+  max-width: 390px;
   justify-content: space-between;
   flex-wrap: wrap;
-  /* margin-top: 20px; */
   margin-left: auto;
   margin-right: auto;
 
@@ -49,7 +48,7 @@ const StyledMobileButtons = styled.div`
     font-size: 0.8rem;
   }
 
-  @media (min-width: 1200px) {
+  /* @media (min-width: 1200px) {
     display: none;
-  }
+  } */
 `;
