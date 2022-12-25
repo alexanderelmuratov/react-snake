@@ -10,6 +10,7 @@ import {
   DIRECTIONS,
 } from './constants';
 import { MobileButtons } from 'MobileButtons';
+import grass from './img/grass4.jpg';
 
 const App = () => {
   const canvasRef = useRef();
@@ -108,8 +109,10 @@ const App = () => {
           display: 'block',
           marginLeft: 'auto',
           marginRight: 'auto',
-          border: '1px solid black',
+          // border: '1px solid black',
           backgroundColor: 'wheat',
+          border: 0,
+          boxShadow: '1px 1px 4px #555',
         }}
         ref={canvasRef}
         width={`${CANVAS_SIZE[0]}px`}
@@ -136,9 +139,12 @@ export default App;
 
 // ========== STYLES ==========
 const Wrapper = styled.div`
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
+  width: 100vw;
+  height: 100vh;
+  background: url(${grass}) #000;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 `;
 
 const StartButton = styled.button`
@@ -161,6 +167,7 @@ const StartButton = styled.button`
   border-radius: 100px;
   /* border: 1px solid black; */
   /* font-family: Pixel, Arial, Helvetica, sans-serif; */
+  /* line-height: normal; */
   font-weight: bold;
   font-size: 24px;
   text-transform: uppercase;
