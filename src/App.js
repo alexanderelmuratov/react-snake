@@ -27,7 +27,7 @@ const App = () => {
   const [gameOver, setGameOver] = useState(true);
   const [score, setScore] = useState(0);
 
-  const [playEatAppleSound] = useSound(eatAppleSound, { volume: 0.5 });
+  const [playEatAppleSound] = useSound(eatAppleSound, { volume: 0.2 });
   const [playSnakeDeadSound] = useSound(snakeDeadSound, { volume: 0.5 });
 
   useInterval(() => gameLoop(), speed);
@@ -44,7 +44,7 @@ const App = () => {
   const endGame = () => {
     setSpeed(null);
     setGameOver(true);
-    toast.error(`GAME OVER! SCORE = ${score}!`);
+    toast.error(`GAME OVER! YOU GOT ${score} 🍎`);
   };
 
   const moveSnake = ({ keyCode }) =>
