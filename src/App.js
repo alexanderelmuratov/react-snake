@@ -140,7 +140,7 @@ const StyledWrapper = styled.div`
   background: url(${grass}) #000;
   background-size: cover;
   background-position: center;
-  overflow: hidden;
+  overflow: scroll;
 `;
 
 const StyledCanvas = styled.canvas`
